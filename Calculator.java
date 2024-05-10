@@ -14,7 +14,7 @@ public class Calculator {
 				+ "\nType 2 to calculate simple formulas, "
 				+ "\nType 3 to calculate the sum of n natural numbers formula,"
 				+ "\nType 4 to determine whether or not a number is odd or even,"
-				+ "\nType 5 to determine whether not not a number is a multiple of another:");
+				+ "\nType 5 to determine whether or not a number is a multiple of another:");
 		
 		int math = input.nextInt();
 		
