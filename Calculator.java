@@ -3,25 +3,13 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		String reset = "RESET";
+		Random rng = new Random();
+		String reset = "reset";
 		
-		while (reset.equals("RESET")) {
+		while (reset.equals("reset")) {
 		reset = "no reset";
 			
-		System.out.println("Type circle to calculate circle formulas,"
-				+ "\nType simple to calculate simple formulas, "
-				+ "\nType euler to calculate the sum of n natural numbers formula,"
-				+ "\nType evenodd to determine whether or not a number is odd or even,"
-				+ "\nType multiple to determine whether or not a number is a multiple of another,"
-				+ "\nType slope to calculate the slope of the line between two points,"
-				+ "\nType exp to calculate exponents, exponential functions and logarithms,"
-				+ "\nType pythag to calculate Pythagorean Theorem,"
-				+ "\nType cossintan to calculate tangent, sine, and cosine (and their opposites),"
-				+ "\nType quad to calculate quadratic equations,"
-				+ "\nType intr to calculate compounded interest formulas,"
-				+ "\nType bmi to calculate BMI,"
-				+ "\nType gpa to calculate GPA,"
-				+ "\nType stats to calculate statistics:");
+		System.out.println("Enter the type of math you would like to do (refer to the readme to understand what to type to get the code to work): ");
 		
 		// to do list: add more stuff for quadratics; different formulas such as root formulas and vertex formulas
 		// also how to find vertex and roots from those specific formulas
@@ -32,7 +20,7 @@ public class Calculator {
 		if (decision.equals("circle")) {
 			
 			System.out.println("\nType simple to do simple circle formulas,"
-					+ "\nType RAD to do radians/degrees circle formulas");
+					+ "\nType rad to do radians/degrees circle formulas");
 			
 			decision = input.next();
 			
@@ -214,6 +202,10 @@ public class Calculator {
 		} 
 		else if (decision.equals("evenodd")) {
 			
+			String loop = "continue";
+			
+		while (loop.equals("continue")) {
+			
 		System.out.println("Please enter your integer: ");
 		
 		int number = input.nextInt();
@@ -224,8 +216,16 @@ public class Calculator {
 		else {
 				System.out.printf("The number %d is odd.", number);
 		}
+		System.out.println("Type continue if you would like to input more numbers:");
+		
+		loop = input.next();
 	}
+}
 		else if (decision.equals("multiple")) {
+			
+		String loop = "continue";
+		
+		while (loop.equals("continue")) {
 			
 		System.out.println("Please enter your first integer: ");
 	
@@ -245,7 +245,11 @@ public class Calculator {
 			System.out.printf("The number %d is NOT a multiple of %d.", number1, number2);
 			
 		}
+		System.out.println("Type continue if you would like to input more numbers:");
+		
+		loop = input.next();
 	}
+}
 		else if (decision.equals("slope")) {
 		
 			System.out.println("What is the first x coordinate?:");
@@ -474,6 +478,8 @@ public class Calculator {
 			decision = input.next();
 			
 			if (decision.equals("fixed")) {
+				
+			while (decision.equals("fixed")) {
 			
 			System.out.println("What is the starting amount?:");
 			
@@ -492,7 +498,12 @@ public class Calculator {
 			double answer = a * Math.pow(r + 1, n);
 			
 			System.out.printf("Your final amount after interest will be $%.2f.", answer);
+			
+			System.out.println("Type fixed if you'd like to calculate the fixed interest rate of a different amount:");
+			
+			decision = input.next();
 		}
+	}
 			else if (decision.equals("dynam")) {
 				
 				System.out.println("What is your starting amount?:");
@@ -543,6 +554,11 @@ public class Calculator {
 			}
 		} 
 		else if (decision.equals("bmi")) {
+			
+			decision = "continue";
+			
+			while (decision.equals("continue")) {
+			
 			System.out.println("What is your height in inches?: ");
 			double height = input.nextDouble();
 			
@@ -554,18 +570,23 @@ public class Calculator {
 			System.out.printf("Your Body Mass Index is %.2f%n", bmi);
 			
 			if (bmi < 18.5) {
-				System.out.print("You are considered underweight for your height.");
+				System.out.println("You are considered underweight for your height.");
 			}
 			else if (18.6 < bmi & bmi < 24.9) {
-				System.out.print("You are considered average weight for your height");
+				System.out.println("You are considered average weight for your height");
 			}
 			else if (25 < bmi & bmi < 29.9) {
-				System.out.print("You are considered overweight for your height");
+				System.out.println("You are considered overweight for your height");
 			} 
 			else {
-				System.out.print("You are considered obese for your height.");
+				System.out.println("You are considered obese for your height.");
 			}
+			
+			System.out.println("Would you like to continue measuring bmi? Type continue if so, type anything else to stop.");
+			
+			decision = input.next();
 		}
+	}
 		else if (decision.equals("gpa")) {
 		
 		double total = 0;
@@ -585,9 +606,9 @@ public class Calculator {
 		int D = 0;
 		int F = 0;
 		
-		String loop = "YES";
+		String loop = "yes";
 		
-		while (loop.equals("YES")) {
+		while (loop.equals("yes")) {
 			
 		System.out.println("Please enter numerical grade.");
 		
@@ -644,7 +665,7 @@ public class Calculator {
 			GPA = GPA + 0;
 		}
 		
-		System.out.println("Would you like to enter another grade? (If yes, please type YES, and if not, type anything else.");
+		System.out.println("Would you like to enter another grade? (If yes, please type yes, and if not, type anything else.");
 		
 		loop = input.next();
 		
@@ -676,9 +697,46 @@ public class Calculator {
 			System.out.println("No grades were entered, sorry.");
 		}
 }
-		System.out.println("\n\nType RESET to restart the program,"
+		else if (decision.equals("stats")) {
+			System.out.println("Type freq to calculate data and their frequencies,"
+					+ "Type prob to calculate probability:");
+			
+			decision = input.next();
+			
+			if (decision.equals("freq")) {
+				
+			}
+			else if (decision.equals("prob")) {
+				
+			}
+			
+		}
+		else if (decision.equals("rng")) {
+			
+			while (decision.equals("rng")) {
+			System.out.println("What is the range for your random number generation?");
+			
+			int range = input.nextInt();
+			
+			decision = "range";
+			
+			while (decision.equals("range")) {
+			
+			int rand = rng.nextInt(range);
+			
+			System.out.printf("Your randomly generated number is %d.%n", rand);
+			
+			System.out.println("Type rng to change the range of the rng, or "
+					+ "type range to randomly generate another number with the same range ");
+			
+			decision = input.next();
+		}
+	}
+}
+		System.out.println("\n\n\nType reset to restart the program,"
 				+ "\nType anything else to stop the program.");
 		reset = input.next();
 		}
+		input.close();
 	}
 }
