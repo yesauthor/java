@@ -4,6 +4,7 @@ public class Calculator {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		Random rng = new Random();
+		ArrayList<Double> Data = new ArrayList<Double>();
 		String reset = "reset";
 		
 		while (reset.equals("reset")) {
@@ -156,6 +157,10 @@ public class Calculator {
 		}
 		else if (decision.equals("compare")) {
 			
+			decision = "yes";
+			
+			while (decision.equals("yes")) {
+				
 			System.out.println("Please enter your first number: ");
 			double num1 = input.nextDouble();
 			
@@ -173,9 +178,15 @@ public class Calculator {
 			}
 			else {
 				System.out.printf("%n%.2f is less than or equal to %.2f.", num1, num2);
+				
+			System.out.println("Would you like to compare more numbers? Type yes if so.");
+			
+			decision = input.next();
+				
 			}
 		}
-	}	
+	}
+}	
 		else if (decision.equals("euler")) {
 			
 		System.out.println("What is the maximum for the n natural numbers formula?:");
@@ -185,7 +196,7 @@ public class Calculator {
 		System.out.println("What is the minimum for the n natural numbers formula?:");
 			
 		int cnt = input.nextInt();
-		//counter for loop
+		//counter for decision
 			
 		int sum = 0;
 			
@@ -202,9 +213,9 @@ public class Calculator {
 		} 
 		else if (decision.equals("evenodd")) {
 			
-			String loop = "continue";
+			decision = "continue";
 			
-		while (loop.equals("continue")) {
+		while (decision.equals("continue")) {
 			
 		System.out.println("Please enter your integer: ");
 		
@@ -218,14 +229,14 @@ public class Calculator {
 		}
 		System.out.println("Type continue if you would like to input more numbers:");
 		
-		loop = input.next();
+		decision = input.next();
 	}
 }
 		else if (decision.equals("multiple")) {
 			
-		String loop = "continue";
+		decision = "continue";
 		
-		while (loop.equals("continue")) {
+		while (decision.equals("continue")) {
 			
 		System.out.println("Please enter your first integer: ");
 	
@@ -247,7 +258,7 @@ public class Calculator {
 		}
 		System.out.println("Type continue if you would like to input more numbers:");
 		
-		loop = input.next();
+		decision = input.next();
 	}
 }
 		else if (decision.equals("slope")) {
@@ -606,9 +617,9 @@ public class Calculator {
 		int D = 0;
 		int F = 0;
 		
-		String loop = "yes";
+		decision = "yes";
 		
-		while (loop.equals("yes")) {
+		while (decision.equals("yes")) {
 			
 		System.out.println("Please enter numerical grade.");
 		
@@ -667,7 +678,7 @@ public class Calculator {
 		
 		System.out.println("Would you like to enter another grade? (If yes, please type yes, and if not, type anything else.");
 		
-		loop = input.next();
+		decision = input.next();
 		
 	}
 		GPA = (double) GPA / cnt;
@@ -698,14 +709,155 @@ public class Calculator {
 		}
 }
 		else if (decision.equals("stats")) {
-			System.out.println("Type freq to calculate data and their frequencies,"
-					+ "Type prob to calculate probability:");
+			System.out.println("Type freq to organize data and calculate stats related to it,"
+					+ "\nType prob to calculate probability:");
 			
 			decision = input.next();
 			
 			if (decision.equals("freq")) {
 				
+			double data = 0;
+			int cnt = 0;
+			
+			System.out.println("How many points on the data set do you have?: ");
+			int pt = input.nextInt();
+				
+			while (cnt < pt) {
+				
+			System.out.println("What is a value in your set of data?: ");
+				
+			data = input.nextDouble();
+				Data.add(data);
+					
+				cnt++;
+				}
+			if (Data.isEmpty() == true) {
+				System.out.println("You didn't enter any data points");
+			}	
+			else {
+			Collections.sort(Data);
+				
+			int median = 0;
+			int med = 0;
+			double median2 = 0;
+			double med2 = 0;
+			int quartile1 = 0;
+			int q1 = 0;
+			double quart1 = 0;
+			double qu1 = 0;
+			int quartile3 = 0;
+			int q3 = 0;
+			double quart3 = 0;
+			double qu3 = 0;
+			double iqr = 0;
+			double fq1 = 0;
+			double fq3 = 0;
+			double fm = 0;
+			double outlier1;
+			double outlier2;
+			double range = 0;
+				
+			if (pt % 2 == 1) {
+			median = pt / 2;
+			quartile1 = pt / 4;
+			q1 = pt / 4;
+			quartile3 = pt * 3 / 4;
+			q3 = pt * 3 / 4;
+			
+			median2 = Data.get(median);
+			quart1 = Data.get(quartile1);
+			qu1 = Data.get(q1);
+			quart3 = Data.get(quartile3);
+			qu3 = Data.get(q3);
+			
+			fq1 = (quart1 + qu1) / 2;
+			fq3 = (quart3 + qu3) / 2;
+			
+			iqr = fq3 - fq1;
+				
+			outlier1 = iqr * 1.5;
+			
+			outlier1 = fq3 + outlier1;
+				
+			outlier2 = iqr * 1.5;
+				
+			outlier2 = fq1 - outlier2;
+					
+			range = Data.get(cnt - 1) - Data.get(0);
+				
+			System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
+			
+			System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+				
+			System.out.printf("%nThe range of the data set is %.2f.%n", range);
+				
+			System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+				
+			System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+				
+			System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+				
+			System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+				
+			System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+				
+			System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+			
+			System.out.printf("%nThe size of your data set is %d.%n",Data.size());
 			}
+			else {
+			median = pt / 2 - 1;
+			med = pt / 2;
+				
+			q1 = pt / 4;
+				
+			q3 = pt * 3 / 4;
+				
+			median2 = Data.get(median);
+			med2 = Data.get(med);
+			
+			qu1 = Data.get(q1);
+			
+			qu3 = Data.get(q3);
+			
+			iqr = qu3 - qu1;
+			
+			fm = (median2 + med2) / 2;
+			
+			outlier1 = iqr * 1.5;
+			
+			outlier1 = qu3 + outlier1;
+			
+			outlier2 = iqr * 1.5;
+				
+			outlier2 = qu1 - outlier2;
+				
+			range = Data.get(cnt - 1) - Data.get(0);
+				
+			System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
+				
+			System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+				
+			System.out.printf("%nThe range of the data set is %.2f.%n", range);
+				
+			System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+				
+			System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+				
+			System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+				
+			System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+				
+			System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+				
+			System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+				
+			System.out.println(Data);
+				
+			System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+		}
+	}
+}
 			else if (decision.equals("prob")) {
 				
 			}
