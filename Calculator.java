@@ -5,6 +5,7 @@ public class Calculator {
 		Scanner input = new Scanner(System.in);
 		Random rng = new Random();
 		ArrayList<Double> Data = new ArrayList<Double>();
+		ArrayList<Double> stdev = new ArrayList<Double>();
 		String reset = "reset";
 		
 		while (reset.equals("reset")) {
@@ -92,7 +93,7 @@ public class Calculator {
 				
 				System.out.println("What is the number you would like to add? (Input 0 to end the addition):");
 				
-				num = input.nextInt();
+				num = input.nextDouble();
 			
 				sum = sum + num;
 			}
@@ -111,7 +112,7 @@ public class Calculator {
 				
 				System.out.println("What is the  nextnumber you would like to add? (Input 0 to end the subtraction):");
 				
-				num = input.nextInt();
+				num = input.nextDouble();
 			
 				diff = diff - num;
 			}
@@ -130,7 +131,7 @@ public class Calculator {
 				
 				System.out.println("What is the next number you would like to multiply? (Input 1 to end the multiplication):");
 				
-				num = input.nextInt();
+				num = input.nextDouble();
 			
 				pd = pd * num;
 			}
@@ -149,7 +150,7 @@ public class Calculator {
 				
 				System.out.println("What is the next number you would like to divide? (Input 1 to end the division):");
 				
-				num = input.nextInt();
+				num = input.nextDouble();
 			
 				qt = qt / num;
 			}
@@ -716,146 +717,262 @@ public class Calculator {
 			
 			if (decision.equals("freq")) {
 				
-			double data = 0;
-			int cnt = 0;
-			
-			System.out.println("How many points on the data set do you have?: ");
-			int pt = input.nextInt();
+			while (decision.equals("freq")) {
 				
-			while (cnt < pt) {
+				double data = 0;
+				int cnt = 0;
+				double mean = 0;
+				int ctt = 0;
 				
-			System.out.println("What is a value in your set of data?: ");
-				
-			data = input.nextDouble();
-				Data.add(data);
+				System.out.println("How many points on the data set do you have?: ");
+				int pt = input.nextInt();
 					
-				cnt++;
+				while (cnt < pt) {
+					
+				System.out.println("What is a value in your set of data?: ");
+					
+				data = input.nextDouble();
+					Data.add(data);
+				mean = mean + data;
+						
+					cnt++;
+					}
+				if (Data.isEmpty() == true) {
+					System.out.println("You didn't enter any data points");
+				}	
+				else {
+				Collections.sort(Data);
+					
+				int median = 0;
+				int med = 0;
+				double median2 = 0;
+				double med2 = 0;
+				int quartile1 = 0;
+				int q1 = 0;
+				double quart1 = 0;
+				double qu1 = 0;
+				int quartile3 = 0;
+				int q3 = 0;
+				double quart3 = 0;
+				double qu3 = 0;
+				double iqr = 0;
+				double fq1 = 0;
+				double fq3 = 0;
+				double fm = 0;
+				double outlier1;
+				double outlier2;
+				double range = 0;
+				double sd = 0;
+				double avg = 0;
+					
+				if (pt % 2 == 1) {
+				median = pt / 2;
+				quartile1 = pt / 4;
+				q1 = pt / 4;
+				quartile3 = pt * 3 / 4;
+				q3 = pt * 3 / 4;
+				
+				median2 = Data.get(median);
+				quart1 = Data.get(quartile1);
+				qu1 = Data.get(q1);
+				quart3 = Data.get(quartile3);
+				qu3 = Data.get(q3);
+				
+				fq1 = (quart1 + qu1) / 2;
+				fq3 = (quart3 + qu3) / 2;
+				
+				iqr = fq3 - fq1;
+					
+				outlier1 = iqr * 1.5;
+				
+				outlier1 = fq3 + outlier1;
+					
+				outlier2 = iqr * 1.5;
+					
+				outlier2 = fq1 - outlier2;
+						
+				range = Data.get(cnt - 1) - Data.get(0);
+				
+				mean = mean / Data.size();
+				
+				final double outlier3 = outlier1;
+				
+				final double outlier4 = outlier2;
+				
+				final double fim = mean;
+				
+				Data.forEach( (n) -> { stdev.add(n);});
+				
+				stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+				
+				stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+				
+				
+				while (ctt < pt) {
+					sd =  sd + stdev.get(ctt);
+					ctt++;
 				}
-			if (Data.isEmpty() == true) {
-				System.out.println("You didn't enter any data points");
-			}	
-			else {
-			Collections.sort(Data);
+				avg = sd / (pt - 1);
 				
-			int median = 0;
-			int med = 0;
-			double median2 = 0;
-			double med2 = 0;
-			int quartile1 = 0;
-			int q1 = 0;
-			double quart1 = 0;
-			double qu1 = 0;
-			int quartile3 = 0;
-			int q3 = 0;
-			double quart3 = 0;
-			double qu3 = 0;
-			double iqr = 0;
-			double fq1 = 0;
-			double fq3 = 0;
-			double fm = 0;
-			double outlier1;
-			double outlier2;
-			double range = 0;
-				
-			if (pt % 2 == 1) {
-			median = pt / 2;
-			quartile1 = pt / 4;
-			q1 = pt / 4;
-			quartile3 = pt * 3 / 4;
-			q3 = pt * 3 / 4;
-			
-			median2 = Data.get(median);
-			quart1 = Data.get(quartile1);
-			qu1 = Data.get(q1);
-			quart3 = Data.get(quartile3);
-			qu3 = Data.get(q3);
-			
-			fq1 = (quart1 + qu1) / 2;
-			fq3 = (quart3 + qu3) / 2;
-			
-			iqr = fq3 - fq1;
-				
-			outlier1 = iqr * 1.5;
-			
-			outlier1 = fq3 + outlier1;
-				
-			outlier2 = iqr * 1.5;
-				
-			outlier2 = fq1 - outlier2;
+				sd = Math.sqrt(avg);
 					
-			range = Data.get(cnt - 1) - Data.get(0);
+				System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
 				
-			System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
-			
-			System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+				System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+					
+				System.out.printf("%nThe range of the data set is %.2f.%n", range);
+					
+				System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+					
+				System.out.printf("%nThe median of your data set is %.2f.%n", median2);
 				
-			System.out.printf("%nThe range of the data set is %.2f.%n", range);
+				System.out.printf("%nThe mean of your data set is %.2f.%n", mean);
+					
+				System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+					
+				System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
 				
-			System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+				System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+					
+				System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+					
+				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n%n", outlier2);
 				
-			System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+				System.out.println(Data);
 				
-			System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+				System.out.printf("%nThe size of your data set is %d.%n",Data.size());
 				
-			System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
-				
-			System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
-				
-			System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
-			
-			System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+				Data.forEach( (n) ->  {if (n > outlier3) {
+					System.out.printf("%.2f is an upper outlier.%n", n);
+				} else if (n < outlier4) {
+					System.out.printf("%.2f is a lower outlier.%n", n); 
 			}
-			else {
-			median = pt / 2 - 1;
-			med = pt / 2;
+				});
 				
-			q1 = pt / 4;
+				if (mean > median2) {
+					System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+					
+					System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+				}
+				else if (median2 > mean) {
+					System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+					
+					System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+				}
+				else {
+					System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+				} 
 				
-			q3 = pt * 3 / 4;
+			}
+				else {
+				median = pt / 2 - 1;
+				med = pt / 2;
+					
+				q1 = pt / 4;
+					
+				q3 = pt * 3 / 4;
+					
+				median2 = Data.get(median);
+				med2 = Data.get(med);
 				
-			median2 = Data.get(median);
-			med2 = Data.get(med);
+				qu1 = Data.get(q1);
+				
+				qu3 = Data.get(q3);
+				
+				iqr = qu3 - qu1;
+				
+				fm = (median2 + med2) / 2;
+				
+				outlier1 = iqr * 1.5;
+				
+				outlier1 = qu3 + outlier1;
+				
+				outlier2 = iqr * 1.5;
+					
+				outlier2 = qu1 - outlier2;
+					
+				range = Data.get(cnt - 1) - Data.get(0);
 			
-			qu1 = Data.get(q1);
+				mean = mean / Data.size();
+				
+				final double outlier3 = outlier1;
+				
+				final double outlier4 = outlier2;
+				
+				final double fim = mean;
+				
+				Data.forEach( (n) -> { stdev.add(n);});
+				
+				stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+				
+				stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+				
+				while (ctt < pt) {
+					sd =  sd + stdev.get(ctt);
+					ctt++;
+				}
+				avg = sd / (pt - 1);
+				
+				sd = Math.sqrt(avg);
+					
+				System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
+					
+				System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+					
+				System.out.printf("%nThe range of the data set is %.2f.%n", range);
+					
+				System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+					
+				System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+				
+				System.out.printf("%nThe mean of your data set is %.2f.%n", mean);
+					
+				System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+					
+				System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+				
+				System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+					
+				System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+					
+				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n%n", outlier2);
+					
+				System.out.println(Data);
+					
+				System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+				
+				Data.forEach( (n) ->  {if (n > outlier3) {
+					System.out.printf("%.2f is an upper outlier.%n", n);
+				} else if (n < outlier4) {
+					System.out.printf("%.2f is a lower outlier.%n", n); 
+			}
+				});
+				
+				if (mean > fm) {
+					System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+					
+					System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+				}
+				else if (fm > mean) {
+					System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+					
+					System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+				}
+				else {
+					System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+					
+					System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						}
+					}
+				}
 			
-			qu3 = Data.get(q3);
+			Data.clear();
+			stdev.clear();
 			
-			iqr = qu3 - qu1;
+			System.out.println("\nWould you like to input another set of data? If so, please input 'freq', if not then type anything else");
 			
-			fm = (median2 + med2) / 2;
+			decision = input.next();
 			
-			outlier1 = iqr * 1.5;
-			
-			outlier1 = qu3 + outlier1;
-			
-			outlier2 = iqr * 1.5;
-				
-			outlier2 = qu1 - outlier2;
-				
-			range = Data.get(cnt - 1) - Data.get(0);
-				
-			System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(cnt - 1));
-				
-			System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
-				
-			System.out.printf("%nThe range of the data set is %.2f.%n", range);
-				
-			System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
-				
-			System.out.printf("%nThe median of your data set is %.2f.%n", fm);
-				
-			System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
-				
-			System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
-				
-			System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
-				
-			System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
-				
-			System.out.println(Data);
-				
-			System.out.printf("%nThe size of your data set is %d.%n",Data.size());
-		}
 	}
 }
 			else if (decision.equals("prob")) {
