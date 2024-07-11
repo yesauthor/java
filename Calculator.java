@@ -6,6 +6,7 @@ public class Calculator {
 		Random rng = new Random();
 		ArrayList<Double> Data = new ArrayList<Double>();
 		ArrayList<Double> stdev = new ArrayList<Double>();
+		ArrayList<Double> prob = new ArrayList<Double>();
 		String reset = "reset";
 		
 		while (reset.equals("reset")) {
@@ -15,7 +16,8 @@ public class Calculator {
 		
 		// to do list: add more stuff for quadratics; different formulas such as root formulas and vertex formulas
 		// also how to find vertex and roots from those specific formulas
-		// STATISTICS TOP PRIORITY --> then quadratics
+		// add probability of d4, d6, d8, d10, d12, d20, d100, card and coin presets (h or t) as well as custom presets that dont include those.
+		
 		
 		String decision = input.next();
 		
@@ -297,6 +299,8 @@ public class Calculator {
 		decision = input.next();
 			
 		if (decision.equals("exp")) {
+			
+			while (decision.equals("exp")) {
 				
 		System.out.println("What is the base number?:");
 			
@@ -308,9 +312,23 @@ public class Calculator {
 			
 		double answer = Math.pow(basenumber, exponent);
 
-		System.out.printf("%.2f to the power of %.2f is %.2f.", basenumber, exponent, answer);	
+		System.out.printf("%.2f to the power of %.2f is %.2f.%n", basenumber, exponent, answer);	
+		
+		System.out.println("Type exp to input another exponent, type anything else to end the loop.");
+		
+		decision = input.next();
+		}
+	}
+		else if (decision.equals("sqrt")) {
+			
+			while (decision.equals("sqrt")) {
+				
+			
+			}
 		}
 		else if (decision.equals("log")) {
+			
+			while (decision.equals("log")) {
 		
 			System.out.println("What is the base of the logarithm?:");
 			double base = input.nextDouble();
@@ -323,8 +341,15 @@ public class Calculator {
 			// la is short for logarithm answer
 			
 			System.out.printf("The logarithm of %.2f with base %.2f is %.2f.", answer, base, la);
+			
+			System.out.println("Type log to input another logarithm, type anything else to end the loop.");
+			
+			decision = input.next();
 		}
+	}
 		else if (decision.equals("ycoord")) {
+			
+			while (decision.equals("ycoord")) {
 			System.out.println("What is the value of the variable a?:");
 			
 			double a = input.nextDouble();
@@ -342,8 +367,15 @@ public class Calculator {
 			double equation = a * Math.pow(b, exponent);
 			
 			System.out.printf("%nThe answer (correlating to the y value) to %.2f * %.2f ^ %.2f is %.2f.", a, b, exponent, equation);
+			
+			System.out.println("Type ycoord to input another exponential function, type anything else to end the loop.");
+			
+			decision = input.next();
 		}
+	}
 		else if (decision.equals("xcoord")) {
+			
+			while (decision.equals("xcoord")) {
 			System.out.println("What is the value of the variable a?:");
 			
 			double a = input.nextDouble();
@@ -361,8 +393,13 @@ public class Calculator {
 			double answer = a * Math.pow(y, exponent);
 			
 			System.out.printf("%nThe answer (correlating to the x value) to %.2f * %.2f ^ %.2f is %.2f.", a, y, exponent, answer);
+			
+			System.out.println("Type xcoord to input another exponential function, type anything else to end the loop.");
+			
+			decision = input.next();
 		}
 	}
+}
 		else if (decision.equals("pythag")) {
 			System.out.println("Type side to calculate a side length,"
 					+ "\nType hypot to calculate the hypotenuse:");
@@ -710,14 +747,16 @@ public class Calculator {
 		}
 }
 		else if (decision.equals("stats")) {
-			System.out.println("Type freq to organize data and calculate stats related to it,"
-					+ "\nType prob to calculate probability:");
+			System.out.println("Type data to organize data and calculate stats related to it,"
+					+ "\nType prob to calculate probability,"
+					+ "\nType zscore to calculate zscore without a data set but with correlating variables,"
+					+ "\nType iqr to calculate iqr without a data set but with correlating variables:");
 			
 			decision = input.next();
 			
-			if (decision.equals("freq")) {
+			if (decision.equals("data")) {
 				
-			while (decision.equals("freq")) {
+			while (decision.equals("data")) {
 				
 				double data = 0;
 				int cnt = 0;
@@ -862,8 +901,72 @@ public class Calculator {
 				else {
 					System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
 				} 
+				System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+				decision = input.next();
 				
+				if (decision.equals("zscore")) {
+					
+					while (decision.equals("zscore")) {
+					
+				System.out.println("Please input the number you'd like to calculate the z score for:");
+				double number = input.nextDouble();
+				
+				double zscore = (number - mean) / sd;
+				
+				if (zscore == 1) {
+					System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+				}
+				else if (zscore == -1) {
+					System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+				}
+				else if (zscore > 0) {
+					System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+				}
+				else if (zscore < 0 ){
+					System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+				}
+				else {
+					System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+					}
+				if (zscore > 2) {
+					System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+				}
+				else if (zscore < -2) {
+					System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+				}
+				if (zscore >= -1 & zscore <= 1) {
+					System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+				}
+				else if (zscore >= -2 & zscore <= 2) {
+					System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+				}
+				else if (zscore >= -3 & zscore <= 3) {
+					System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+				}
+				double sixtyeightp = mean + (1 * sd);
+				
+				double sixeightp = mean - (1 * sd);
+				
+				double ninetyfivep = mean + (2 * sd);
+				
+				double ninefivep = mean - (2 * sd);
+				
+				double ninetyninepointsevenp = mean + (3 * sd);
+				
+				double ninenineptsevenp = mean - (3 * sd);
+				
+				System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+				
+				System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+				
+				System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+				
+				System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+						+ "Input 'zscore' if so, type anything else if not.");
+				decision = input.next();
+				}
 			}
+		}
 				else {
 				median = pt / 2 - 1;
 				med = pt / 2;
@@ -962,14 +1065,80 @@ public class Calculator {
 					System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
 					
 					System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
-						}
+					
+					System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+					decision = input.next();
+					
+					if (decision.equals("zscore")) {
+						
+						while (decision.equals("zscore")) {
+						
+					System.out.println("Please input the number you'd like to calculate the z score for:");
+					double number = input.nextDouble();
+					
+					double zscore = (number - mean) / sd;
+					
+					if (zscore == 1) {
+						System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
 					}
+					else if (zscore == -1) {
+						System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+					}
+					else if (zscore > 0) {
+						System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+					}
+					else if (zscore < 0 ){
+						System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+					}
+					else {
+						System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+									}
+					if (zscore > 2) {
+						System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+					}
+					else if (zscore < -2) {
+						System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+					}
+					if (zscore >= -1 & zscore <= 1) {
+						System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+					}
+					else if (zscore >= -2 & zscore <= 2) {
+						System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+					}
+					else if (zscore >= -3 & zscore <= 3) {
+						System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+					}
+					double sixtyeightp = mean + (1 * sd);
+					
+					double sixeightp = mean - (1 * sd);
+					
+					double ninetyfivep = mean + (2 * sd);
+					
+					double ninefivep = mean - (2 * sd);
+					
+					double ninetyninepointsevenp = mean + (3 * sd);
+					
+					double ninenineptsevenp = mean - (3 * sd);
+					
+					System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+					
+					System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+					
+					System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+					
+					System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+							+ " Input 'zscore' if so, type anything else if not.");
+					decision = input.next();
+								}
+							}
+						}
+					}	
 				}
 			
 			Data.clear();
 			stdev.clear();
 			
-			System.out.println("\nWould you like to input another set of data? If so, please input 'freq', if not then type anything else");
+			System.out.println("\nWould you like to input another set of data? If so, please input 'data', if not then type anything else:");
 			
 			decision = input.next();
 			
@@ -977,28 +1146,146 @@ public class Calculator {
 }
 			else if (decision.equals("prob")) {
 				
+				System.out.println("Type ");
+				
 			}
-			
+			else if (decision.equals("zscore")) {
+				
+				while (decision.equals("zscore")) {
+					
+					System.out.println("Please input the number you'd like to calculate the z score for:");
+					double number = input.nextDouble();
+					
+					System.out.println("Please input the mean:");
+					double mean = input.nextDouble();
+					
+					System.out.println("Please input the standard deviation");
+					double sd = input.nextDouble();
+					
+					double zscore = (number - mean) / sd;
+					
+					if (zscore == 1) {
+						System.out.printf("The inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+					}
+					else if (zscore == -1) {
+						System.out.printf("The inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+					}
+					else if (zscore > 0) {
+						System.out.printf("The inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+					}
+					else if (zscore < 0 ){
+						System.out.printf("The inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+					}
+					else {
+						System.out.printf("The inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+					}
+					if (zscore > 2) {
+						System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+					}
+					else if (zscore < -2) {
+						System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+					}
+					if (zscore >= -1 & zscore <= 1) {
+						System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+					}
+					else if (zscore >= -2 & zscore <= 2) {
+						System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+					}
+					else if (zscore >= -3 & zscore <= 3) {
+						System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+					}
+					double sixtyeightp = mean + (1 * sd);
+					
+					double sixeightp = mean - (1 * sd);
+					
+					double ninetyfivep = mean + (2 * sd);
+					
+					double ninefivep = mean - (2 * sd);
+					
+					double ninetyninepointsevenp = mean + (3 * sd);
+					
+					double ninenineptsevenp = mean - (3 * sd);
+					
+					System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+					
+					System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+					
+					System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+					
+					System.out.println("\nWould you like to calculate the zscore of another number? Input 'zscore' if so, type anything else if not.");
+					decision = input.next();
+				}
+			}
+			else if (decision.equals("iqr")) {
+				
+				while (decision.equals("iqr")) {
+					
+					System.out.println("Input the value for quartile 1:");
+					double q1 = input.nextDouble();
+					
+					System.out.println("Input the value for quartile 3:");
+					double q3 = input.nextDouble();
+					
+					double iqr = q3 - q1;
+					
+					double lwrotlr = q1 - (iqr * 1.5);
+					
+					double hghrotlr = q3 + (iqr * 1.5);
+					
+					System.out.printf("The Inter-Quartile Range is %.2f.%n", iqr);
+					
+					System.out.printf("The limit for lower outliers is %.2f.%n", lwrotlr);
+					
+					System.out.printf("The limit for upper oultiers is %.2f.%n", hghrotlr);
+					
+					System.out.println("Would you like to calculate iqr? Type 'iqr' if so, type anything else if not.");
+					
+					decision = input.next();
+				}
+			}
 		}
 		else if (decision.equals("rng")) {
-			
-			while (decision.equals("rng")) {
-			System.out.println("What is the range for your random number generation?");
-			
-			int range = input.nextInt();
 			
 			decision = "range";
 			
 			while (decision.equals("range")) {
+			System.out.println("What is the range for your random number generation?");
+			
+			int range = input.nextInt();
+			
+			int amt;
+			
+			decision = "rng";
+			
+			while (decision.equals("rng")) {
+				
+				System.out.println("How many numbers would you like randomly generated?:");
+				
+				amt = input.nextInt();
+				
+			for (int cnt = 1;cnt <= amt; cnt++) {
 			
 			int rand = rng.nextInt(range);
 			
-			System.out.printf("Your randomly generated number is %d.%n", rand);
+			if (cnt % 10 == 1) {
+				System.out.printf("Your %dst randomly generated number is %d.%n", cnt, rand);
+			}
+			else if (cnt % 10 == 2) {
+				System.out.printf("Your %dnd randomly generated number is %d.%n", cnt, rand);
+			}
+			else if (cnt % 10 == 3) {
+				System.out.printf("Your %drd randomly generated number is %d.%n", cnt, rand);
+			}
+			else  {
+				System.out.printf("Your %dth randomly generated number is %d.%n", cnt, rand);
+			}
 			
-			System.out.println("Type rng to change the range of the rng, or "
-					+ "type range to randomly generate another number with the same range ");
+			}
+			System.out.println("Type range to change the range of the rng, or "
+					+ "type rng to randomly generate another number with the same range ");
 			
 			decision = input.next();
+			
 		}
 	}
 }
