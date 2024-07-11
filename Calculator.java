@@ -899,6 +899,8 @@ public class Calculator {
 					System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
 				}
 				else {
+					System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+					
 					System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
 				} 
 				System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
