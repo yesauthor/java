@@ -1,31 +1,73 @@
-How to use the calculator:
+How to use the calculator: (Note: Type the word in the quotation marks, do not include the quotation marks.)
 
-Type circle to calculate circle formulas,
+1. Type "circle" to calculate circle formulas,
 
-Type simple to calculate simple formulas, 
+1a. Options for "circle" are: "simple" or "rad"
 
-Type euler to calculate the sum of n natural numbers formula,
+1b. Options for "rad" are "rads" or "deg"
 
-Type evenodd to determine whether or not a number is odd or even,
+2. Type "simple" to calculate simple formulas, 
 
-Type multiple to determine whether or not a number is a multiple of another,
+2a. "add" for addition
 
-Type slope to calculate the slope of the line between two points,
+2b. "subtract" for subtraction
 
-Type exp to calculate exponents, exponential functions and logarithms,
+2c. "multiply" for multiplication
 
-Type pythag to calculate Pythagorean Theorem,
+2d. "divide" for division
 
-Type cossintan to calculate tangent, sine, and cosine (and their opposites),
+2e. "compare" for comparisons between two numbers
 
-Type quad to calculate quadratic equations,
+3. Type "euler" to calculate the sum of n natural numbers formula,
 
-Type intr to calculate compounded interest formulas,
+4. Type "evenodd" to determine whether or not a number is odd or even,
 
-Type bmi to calculate BMI,
+5. Type "multiple" to determine whether or not a number is a multiple of another,
 
-Type gpa to calculate GPA,
+6. Type "slope" to calculate the slope of the line between two points,
 
-Type stats to calculate statistics,
+7. Type "exp" to calculate exponents, exponential functions and logarithms,
 
-Type rng to use the random number generator
+7a. "exp" for exponents
+
+7b. "sqrt" for square roots
+
+7c. "log" for logarithms
+
+7d. "ycoord" for the y coordinate of an exponential function
+
+7e. "xcoord" for the x coordinate of an exponential function
+
+8. Type "pythag" to calculate Pythagorean Theorem,
+
+8a. "side" to calculate a side length
+
+8b. "hypot" to calculate hypotenuse
+
+9. Type "cossintan" to calculate tangent, sine, and cosine (and their opposites),
+
+10. Type "quad" to calculate quadratic equations,
+
+10a. "rootstan" to find the roots in standard form.
+
+11. Type "intr" to calculate compounded interest formulas,
+
+11a. "fixed" to do fixed interest rates
+
+11b. "dynam" to do dynamic interest rates
+
+12. Type "bmi" to calculate BMI,
+
+13. Type "gpa" to calculate GPA, 
+
+14. Type "stats" to calculate statistics,
+
+14a. "data" to organize data and calculate stats related to it
+
+14b. "prob" to calculate probability
+
+14c. "zscore" to calculate zscore without a data set but with correlating variables
+
+14d. "iqr" to calculate iqr without a data set but with correlating variables
+
+15. Type "rng" to use the random number generator
