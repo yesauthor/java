@@ -6,7 +6,7 @@ public class Statistics {
         ArrayList<Double> data = new ArrayList<>();
 		
 		 System.out.println("Enter numbers separated by spaces to add to the ArrayList:");
-	        String inp = input.nextLine();  // Changed from next() to nextLine() to read the entire line
+	        String inp = input.nextLine();  
 
 	        String[] values = inp.split(" ");
 	        
