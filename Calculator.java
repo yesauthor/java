@@ -3,10 +3,10 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		Random rng = new Random();
+		Random random = new Random();
 		ArrayList<Double> Data = new ArrayList<Double>();
 		ArrayList<Double> stdev = new ArrayList<Double>();
-		ArrayList<Double> prob = new ArrayList<Double>();
+		Map<Integer, Integer> FrequencyMap = new HashMap<>();
 		String reset = "reset";
 		
 		while (reset.equals("reset")) {
@@ -23,8 +23,7 @@ public class Calculator {
 		
 		if (decision.equals("circle")) {
 			
-			System.out.println("\nType simple to do simple circle formulas,"
-					+ "\nType rad to do radians/degrees circle formulas");
+			System.out.println("\nType the option you would like that is located in the readme:");
 			
 			decision = input.next();
 			
@@ -47,8 +46,7 @@ public class Calculator {
 		}
 			if (decision.equals("rad")) {
 			
-			System.out.println("\nType rads to find radians,"
-					+ "\nType deg to find degrees:");
+			System.out.println("\nType the option you would like that is located in the readme:");
 			
 			decision = input.next();
 			
@@ -77,11 +75,8 @@ public class Calculator {
 	}	
 		else if (decision.equals("simple")) {
 		
-		System.out.println("Type add to do addition,"
-				+ "\nType subtract to do subtraction,"
-				+ "\nType multiply to do multiplication,"
-				+ "\nType divide to do division,"
-				+ "\nType compare to do comparisons between numbers:");
+		System.out.println("Type the option you would like that is located in the readme:");
+		
 		decision = input.next();
 		
 		if (decision.equals("add")) {
@@ -259,7 +254,7 @@ public class Calculator {
 			System.out.printf("The number %d is NOT a multiple of %d.", number1, number2);
 			
 		}
-		System.out.println("Type continue if you would like to input more numbers:");
+		System.out.println("Type 'continue' if you would like to input more numbers:");
 		
 		decision = input.next();
 	}
@@ -292,10 +287,7 @@ public class Calculator {
 		}
 		else if (decision.equals("exp")) {
 		
-		System.out.println("Type exp to calculate exponents,"
-					+ "\nType log to calculate logarithms,"
-					+ "\nType ycoord to calculate the y value of an exponential function,"
-					+ "\nType xcoord to calculate the x value of an exponential function:");
+		System.out.println("Type the option you would like that is located in the readme:");
 		decision = input.next();
 			
 		if (decision.equals("exp")) {
@@ -322,8 +314,18 @@ public class Calculator {
 		else if (decision.equals("sqrt")) {
 			
 			while (decision.equals("sqrt")) {
+
+				System.out.println("What is the base number?:");
 				
-			
+				double basenumber = input.nextDouble();
+					
+				double answer = Math.sqrt(basenumber);
+
+				System.out.printf("The square root of %.2f is %.2f.%n", basenumber, answer);	
+				
+				System.out.println("Type sqrt to input another number to get the square root of, type anything else to end the loop.");
+				
+				decision = input.next();
 			}
 		}
 		else if (decision.equals("log")) {
@@ -478,10 +480,7 @@ public class Calculator {
 		}
 		else if (decision.equals("quad")) {
 			
-			System.out.println("/nType rootstan to find the roots in standard form,"
-					+ "\nType rootsvert to find the roots in vertex form,"
-					+ "\nType vertstan to find the vertex in standard form,"
-					+ "\nType vertroots to find the vertex in roots form:");
+			System.out.println("\nType the option you would like that is located in the readme:");
 			
 			decision = input.next();
 			
@@ -521,8 +520,7 @@ public class Calculator {
 	}
 		else if (decision.equals("intr")) {
 			
-			System.out.println("Type fixed to do a fixed compounded interest formula,"
-					+ "\nType dynam to do a dynamic compounded interest formula");
+			System.out.println("\nType the option you would like that is located in the readme:");
 			
 			decision = input.next();
 			
@@ -747,10 +745,7 @@ public class Calculator {
 		}
 }
 		else if (decision.equals("stats")) {
-			System.out.println("Type data to organize data and calculate stats related to it,"
-					+ "\nType prob to calculate probability,"
-					+ "\nType zscore to calculate zscore without a data set but with correlating variables,"
-					+ "\nType iqr to calculate iqr without a data set but with correlating variables:");
+			System.out.println("\nType the option you would like that is located in the readme:");
 			
 			decision = input.next();
 			
@@ -875,9 +870,7 @@ public class Calculator {
 					
 				System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
 					
-				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n%n", outlier2);
-				
-				System.out.println(Data);
+				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
 				
 				System.out.printf("%nThe size of your data set is %d.%n",Data.size());
 				
@@ -903,6 +896,8 @@ public class Calculator {
 					
 					System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
 				} 
+				if (mean == median2) {
+			
 				System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
 				decision = input.next();
 				
@@ -969,6 +964,7 @@ public class Calculator {
 				}
 			}
 		}
+	}
 				else {
 				median = pt / 2 - 1;
 				med = pt / 2;
@@ -1040,9 +1036,7 @@ public class Calculator {
 					
 				System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
 					
-				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n%n", outlier2);
-					
-				System.out.println(Data);
+				System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
 					
 				System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
 				
@@ -1068,6 +1062,7 @@ public class Calculator {
 					
 					System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
 					
+					if (mean == fm) {
 					System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
 					decision = input.next();
 					
@@ -1136,7 +1131,7 @@ public class Calculator {
 						}
 					}	
 				}
-			
+			}
 			Data.clear();
 			stdev.clear();
 			
@@ -1148,8 +1143,4189 @@ public class Calculator {
 }
 			else if (decision.equals("prob")) {
 				
-				System.out.println("Type ");
+				System.out.println("Type your option according to what is stated in the readme under 14b:");
 				
+				decision = input.next();
+			
+				if (decision.equals("d4")) {
+					
+					while (decision.equals("d4")) {
+						int range = 4;
+				        double mean = 0;
+				        int ctt = 0; 
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);		
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d4 dice? Type 'd4' if so.");
+				        decision = input.next();
+				}
+			}
+				else if (decision.equals("d6")) {
+					
+					while (decision.equals("d6")) {
+						int range = 6;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d6 dice? Type 'd6' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("d8")) {
+					while (decision.equals("d8")) {
+						int range = 8;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				       
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				       
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d8 dice? Type 'd8' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("d10")) {
+					while (decision.equals("d10")) {
+						int range = 10;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d10 dice? Type 'd10' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("d12")) {
+					
+					while (decision.equals("d12")) {
+						int range = 12;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				       
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d12 dice? Type 'd12' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("d20")) {
+					while (decision.equals("d20")) {
+						int range = 20;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+					       
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);		
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+					    
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d20 dice? Type 'd20' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("d100")) {
+				
+					while (decision.equals("d100")) {
+						int range = 100;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of d100 dice? Type 'd100' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("coin")) {
+					
+					while (decision.equals("coin")) {
+						int range = 2;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of a coin? Type 'coin' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("cards")) {
+				
+					while (decision.equals("cards")) {
+						int range = 52;
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+				        
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another simulation of a deck of cards? Type 'cards' if so.");
+				        decision = input.next();
+					}
+				}
+				else if (decision.equals("custom")) {
+					
+					while (decision.equals("custom")) {
+						
+						System.out.println("What is the range of the simulation? (From 1 - n)");
+						int range = input.nextInt();
+						
+				        double mean = 0;
+				        int ctt = 0;
+				        int freq;
+				        int numbers;
+				        int mostFrequentNumber = -1;
+				        int leastFrequentNumber = -1;
+				        int maxFrequency = -1;
+				        int minFrequency = Integer.MAX_VALUE;
+				        System.out.println("Enter the number of random numbers to generate: ");
+				        int amt = input.nextInt();
+
+				        for (int i = 0; i < amt; i++) {
+				            int rng = random.nextInt(range) + 1;
+				            FrequencyMap.put(rng, FrequencyMap.getOrDefault(rng, 0) + 1);
+				            double rng2 = rng;
+				            Data.add(rng2);
+				            mean = mean + rng;
+				        }
+
+				        System.out.println("\n\n\nFrequencies of each randomly generated number:");
+				        for (Map.Entry<Integer, Integer> entry : FrequencyMap.entrySet()) {
+				            System.out.println("Number " + entry.getKey() + ": " + entry.getValue() + " times");
+				            numbers = entry.getKey();
+				            freq = entry.getValue();
+					        double percentage = (double) freq / amt * 100;
+					        System.out.printf("Approx. percentage for number %d is %.2f%%.%n%n", entry.getKey(), percentage);
+					        if (freq > maxFrequency) {
+				                maxFrequency = freq;
+				                mostFrequentNumber = numbers;
+				            }
+				            if (freq < minFrequency) {
+				                minFrequency = freq;
+				                leastFrequentNumber = numbers;
+				            }
+				        }
+				        
+				        if (Data.isEmpty() == true) {
+							System.out.println("You didn't enter any data points");
+						}	
+						else {
+						Collections.sort(Data);
+							
+						int median = 0;
+						int med = 0;
+						double median2 = 0;
+						double med2 = 0;
+						int quartile1 = 0;
+						int q1 = 0;
+						double quart1 = 0;
+						double qu1 = 0;
+						int quartile3 = 0;
+						int q3 = 0;
+						double quart3 = 0;
+						double qu3 = 0;
+						double iqr = 0;
+						double fq1 = 0;
+						double fq3 = 0;
+						double fm = 0;
+						double outlier1;
+						double outlier2;
+						double Rnge = 0;
+						double sd = 0;
+						double avg = 0;
+							
+						if (amt % 2 == 1) {
+						median = amt / 2;
+						quartile1 = amt / 4;
+						q1 = amt / 4;
+						quartile3 = amt * 3 / 4;
+						q3 = amt * 3 / 4;
+						
+						median2 = Data.get(median);
+						quart1 = Data.get(quartile1);
+						qu1 = Data.get(q1);
+						quart3 = Data.get(quartile3);
+						qu3 = Data.get(q3);
+						
+						fq1 = (quart1 + qu1) / 2;
+						fq3 = (quart3 + qu3) / 2;
+						
+						iqr = fq3 - fq1;
+							
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = fq3 + outlier1;
+							
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = fq1 - outlier2;
+								
+						Rnge = Data.get(amt - 1) - Data.get(0);
+						
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+						
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", fq1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", median2);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+					    
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", fq3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.2f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+						
+						System.out.printf("%nThe size of your data set is %d.%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > median2) {
+							System.out.println("If you were to graph these data points, the graph would be positively (right) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (median2 > mean) {
+							System.out.println("If you were to graph these data points, the graph would be negatively (left) skewed");
+							
+							System.out.println("Since the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("Since the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+						} 
+						if (mean == median2) {
+					
+						System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+						decision = input.next();
+						
+						if (decision.equals("zscore")) {
+							
+							while (decision.equals("zscore")) {
+							
+						System.out.println("Please input the number you'd like to calculate the z score for:");
+						double number = input.nextDouble();
+						
+						double zscore = (number - mean) / sd;
+						
+						if (zscore == 1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore == -1) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore > 0) {
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+						}
+						else if (zscore < 0 ){
+							System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+						}
+						else {
+							System.out.printf("%nThe inputted number (%.2f) is the same as the mean (%.2f).%n", number, mean);
+							}
+						if (zscore > 2) {
+							System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+						}
+						else if (zscore < -2) {
+							System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+						}
+						if (zscore >= -1 & zscore <= 1) {
+							System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+						}
+						else if (zscore >= -2 & zscore <= 2) {
+							System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+						}
+						else if (zscore >= -3 & zscore <= 3) {
+							System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+						}
+						double sixtyeightp = mean + (1 * sd);
+						
+						double sixeightp = mean - (1 * sd);
+						
+						double ninetyfivep = mean + (2 * sd);
+						
+						double ninefivep = mean - (2 * sd);
+						
+						double ninetyninepointsevenp = mean + (3 * sd);
+						
+						double ninenineptsevenp = mean - (3 * sd);
+						
+						System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+						
+						System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+						
+						System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+						
+						System.out.println("\nWould you like to calculate the zscore of another number for the same data set? "
+								+ "Input 'zscore' if so, type anything else if not.");
+						decision = input.next();
+						}
+					}
+				}
+			}
+						else {
+						median = amt / 2 - 1;
+						med = amt / 2;
+							
+						q1 = amt / 4;
+							
+						q3 = amt * 3 / 4;
+							
+						median2 = Data.get(median);
+						med2 = Data.get(med);
+						
+						qu1 = Data.get(q1);
+						
+						qu3 = Data.get(q3);
+						
+						iqr = qu3 - qu1;
+						
+						fm = (median2 + med2) / 2;
+						
+						outlier1 = iqr * 1.5;
+						
+						outlier1 = qu3 + outlier1;
+						
+						outlier2 = iqr * 1.5;
+							
+						outlier2 = qu1 - outlier2;
+							
+						Rnge = Data.get(amt - 1) - Data.get(0);
+					
+						mean = mean / Data.size();
+						
+						final double outlier3 = outlier1;
+						
+						final double outlier4 = outlier2;
+						
+						final double fim = mean;
+						
+						Data.forEach( (n) -> { stdev.add(n);});
+						
+						stdev.replaceAll( (n) -> n = Math.abs(n - fim));
+						
+						stdev.replaceAll( (n) -> n = Math.pow(n, 2));
+						
+						while (ctt < amt) {
+							sd =  sd + stdev.get(ctt);
+							ctt++;
+						}
+						avg = sd / (amt - 1);
+						
+						sd = Math.sqrt(avg);
+							
+						System.out.printf("%nThe maximum of the data set is %.2f.%n", Data.get(amt - 1));
+							
+						System.out.printf("%nThe minimum of the data set is %.2f.%n", Data.get(0));
+							
+						System.out.printf("%nThe range of the data set is %.2f.%n", Rnge);
+							
+						System.out.printf("%nThe value for quartile 1 is %.2f.%n", qu1);
+							
+						System.out.printf("%nThe median of your data set is %.2f.%n", fm);
+						
+						System.out.printf("%nThe mean of your data set is %.2f.%n%n", mean);
+						
+						System.out.printf("Most Frequent Number: %d (Frequency: %d)%n%n", mostFrequentNumber, maxFrequency);
+					    
+						System.out.printf("Least Frequent Number: %d (Frequency: %d)%n", leastFrequentNumber, minFrequency);
+							
+						System.out.printf("%nThe value for quartile 3 is %.2f.%n", qu3);
+							
+						System.out.printf("%nThe interquartile range is %.2f.%n", iqr);
+						
+						System.out.printf("%nThe standard deviation of the data is %.3f.%n", sd);
+							
+						System.out.printf("%nNumbers in the data set above %.2f should be considered as outliers.%n", outlier1);
+							
+						System.out.printf("%nNumbers in the data set below %.2f should be considered as outliers.%n", outlier2);
+							
+						System.out.printf("%nThe size of your data set is %d.%n%n",Data.size());
+						
+						Data.forEach( (n) ->  {if (n > outlier3) {
+							System.out.printf("%.2f is an upper outlier.%n", n);
+						} else if (n < outlier4) {
+							System.out.printf("%.2f is a lower outlier.%n", n); 
+					}
+						});
+						
+						if (mean > fm) {
+							System.out.println("\nIf you were to graph these data points, the graph would be positively (right) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else if (fm > mean) {
+							System.out.println("\nIf you were to graph these data points, the graph would be negatively (left) skewed.");
+							
+							System.out.println("\nSince the data is skewed, it is recommended to use the median and Inter-Quartile Range (IQR).");
+						}
+						else {
+							System.out.println("\nIf you were to graph these data points, the graph would be symmetrical.");
+							
+							System.out.println("\nSince the data is symmetrical, it is recommended to use the mean and Standard Deviation (St. Dev).");
+							
+							if (mean == fm) {
+							System.out.println("Would you like to calculate z-score? If so, please input 'zscore' and if not then type anything else:");
+							decision = input.next();
+							
+							if (decision.equals("zscore")) {
+								
+								while (decision.equals("zscore")) {
+								
+							System.out.println("Please input the number you'd like to calculate the z score for:");
+							double number = input.nextDouble();
+							
+							double zscore = (number - mean) / sd;
+							
+							if (zscore == 1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the right) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore == -1) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviation away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore > 0) {
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the right) from the mean.%n", number, Math.abs(zscore));
+							}
+							else if (zscore < 0 ){
+								System.out.printf("%nThe inputted number (%.2f) is %.2f standard deviations away (to the left) of the mean.%n", number, Math.abs(zscore));
+							}
+							else {
+								System.out.printf("%nThe inputted number  (%.2f) is the same as the mean (%.2f).%n ", number, mean);
+											}
+							if (zscore > 2) {
+								System.out.printf("The inputted number %.2f is a positive outlier.%n", number);
+							}
+							else if (zscore < -2) {
+								System.out.printf("The inputted number %.2f is a negative outlier.%n", number);
+							}
+							if (zscore >= -1 & zscore <= 1) {
+								System.out.printf("The inputted number %.2f lies within 68 percent of the data.%n", number);
+							}
+							else if (zscore >= -2 & zscore <= 2) {
+								System.out.printf("The inputted number %.2f lies within 95 percent of the data.%n", number);
+							}
+							else if (zscore >= -3 & zscore <= 3) {
+								System.out.printf("The inputted number %.2f lies within 99.7 percent of the data.%n", number);
+							}
+							double sixtyeightp = mean + (1 * sd);
+							
+							double sixeightp = mean - (1 * sd);
+							
+							double ninetyfivep = mean + (2 * sd);
+							
+							double ninefivep = mean - (2 * sd);
+							
+							double ninetyninepointsevenp = mean + (3 * sd);
+							
+							double ninenineptsevenp = mean - (3 * sd);
+							
+							System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
+							
+							System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
+							
+							System.out.printf("99.7 percent of the data lies between %.2f and %.2f.%n", ninenineptsevenp, ninetyninepointsevenp);
+							
+							System.out.println("\nWould you like to calculate the zscore of another number for the same data set?"
+									+ " Input 'zscore' if so, type anything else if not.");
+							decision = input.next();
+										}
+									}
+								}
+							}	
+						}
+					}
+				    	Data.clear();
+						stdev.clear();
+						FrequencyMap.clear();
+						
+				        System.out.println("Would you like to do another custom simulation? Type 'custom' if so.");
+				        decision = input.next();
+					}
+				}
 			}
 			else if (decision.equals("zscore")) {
 				
@@ -1208,6 +5384,9 @@ public class Calculator {
 					
 					double ninenineptsevenp = mean - (3 * sd);
 					
+					// first two variables are for 68% of the data, 3rd and 4th variables are for 95% of the data
+					// and the last two variables are for 99.7% of the data.
+					
 					System.out.printf("68 percent of the data lies between %.2f and %.2f.%n", sixeightp, sixtyeightp);
 					
 					System.out.printf("95 percent of the data lies between %.2f and %.2f.%n", ninefivep, ninetyfivep);
@@ -1234,11 +5413,13 @@ public class Calculator {
 					
 					double hghrotlr = q3 + (iqr * 1.5);
 					
-					System.out.printf("The Inter-Quartile Range is %.2f.%n", iqr);
+					// lower and higher outliers.
 					
-					System.out.printf("The limit for lower outliers is %.2f.%n", lwrotlr);
+					System.out.printf("The Inter-Quartile Range is %.3f.%n", iqr);
 					
-					System.out.printf("The limit for upper oultiers is %.2f.%n", hghrotlr);
+					System.out.printf("The limit for lower outliers is %.3f.%n", lwrotlr);
+					
+					System.out.printf("The limit for upper oultiers is %.3f.%n", hghrotlr);
 					
 					System.out.println("Would you like to calculate iqr? Type 'iqr' if so, type anything else if not.");
 					
@@ -1267,7 +5448,7 @@ public class Calculator {
 				
 			for (int cnt = 1;cnt <= amt; cnt++) {
 			
-			int rand = rng.nextInt(range);
+			int rand = random.nextInt(range) + 1;
 			
 			if (cnt % 10 == 1) {
 				System.out.printf("Your %dst randomly generated number is %d.%n", cnt, rand);
@@ -1281,8 +5462,7 @@ public class Calculator {
 			else  {
 				System.out.printf("Your %dth randomly generated number is %d.%n", cnt, rand);
 			}
-			
-			}
+		}
 			System.out.println("Type range to change the range of the rng, or "
 					+ "type rng to randomly generate another number with the same range ");
 			
