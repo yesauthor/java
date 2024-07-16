@@ -133,7 +133,7 @@ How to use the calculator: (Note: Type the word in the quotation marks, do not i
 40 - 52 = diamonds suit from Ace to King)
 
 
-14bj.Type 'custom' to run a custom simulation
+14bj. Type 'custom' to run a custom simulation
 
 
 14c. "zscore" to calculate zscore without a data set but with correlating variables
